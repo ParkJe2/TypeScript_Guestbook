@@ -1,4 +1,5 @@
 import React from "react";
+import { St } from "./GuestbookItemStyle";
 
 interface ItemProps {
   item: {
@@ -11,11 +12,13 @@ interface ItemProps {
 
 const GuestbookItem: React.FC<ItemProps> = ({ item }) => {
   return (
-    <div>
-      <p style={{ fontWeight: "bold" }}>작성 시간: {new Date(item.createdAt).toLocaleString()}</p>
-      <p>내용: {item.content}</p>
-      <p>작성자: {item.nickname}</p>
-    </div>
+    <St.ItemContainer>
+      <St.ItemContent>{item.content}</St.ItemContent>
+      <St.ItemNickname>⏤ {item.nickname}</St.ItemNickname>
+      <St.ItemCreationTime>
+        작성 시간 : {new Date(item.createdAt).toLocaleString()}
+      </St.ItemCreationTime>
+    </St.ItemContainer>
   );
 };
 

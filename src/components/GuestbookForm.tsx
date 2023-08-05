@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { St } from "./GuestbookFormStyle";
 
 interface FormProps {
   onSubmit: (data: { nickname: string; content: string }) => void;
@@ -37,20 +38,24 @@ const GuestbookForm: React.FC<FormProps> = ({ onSubmit }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit}>
-      <input
-        type="text"
-        value={nickname}
-        onChange={(e) => setNickname(e.target.value)}
-        placeholder="닉네임을 입력해주세요"
-      />
-      <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="내용을 입력해주세요"
-      />
-      <button type="submit">등록</button>
-    </form>
+    <St.FormContainer>
+      <form onSubmit={handleSubmit}>
+        <St.NicknameForm
+          type="text"
+          value={nickname}
+          onChange={(e) => setNickname(e.target.value)}
+          placeholder="닉네임을 입력해주세요"
+        />
+        <div>
+          <St.ContentForm
+            value={content}
+            onChange={(e) => setContent(e.target.value)}
+            placeholder="내용을 입력해주세요"
+          />
+          <St.AddBtn type="submit">등록</St.AddBtn>
+        </div>
+      </form>
+    </St.FormContainer>
   );
 };
 
